@@ -1,24 +1,58 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                 | Type     | Options                   |
+| ---------------------- | -------- | ------------------------- |
+| email                  | string   | null: false, unique: true |
+| encrypted_password     | string   | null: false               |
+| nickname               | string   | null: false               |
 
-* Ruby version
+### Association
+ - belongs_to :memo
+ - has_many :informaions
 
-* System dependencies
 
-* Configuration
+## memos テーブル
+| Column    | Type       | Options     |
+| --------- | ---------- | ----------- |
+| title     | string     | null: false |
+| content   | text       | null: false |
+| time      | date       | null: false |
 
-* Database creation
+### Association
+ - belongs_to :user
+ - has_many :details
 
-* Database initialization
 
-* How to run the test suite
+## informations テーブル
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| name           | string     | null: false |
+| sex            | string     | null: false |
+| kinds          | string     |
+| color          | string     | null: false |
+| birthday       | date       | null: false |
+| user           | references | null: false,foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+ - belongs_to :user
+ - has_one :detail
 
-* Deployment instructions
 
-* ...
+## details テーブル
+
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| rice          | string     | null: false |
+| medicine      | string     |
+| vaccination   | string     | null: false |
+| weight        | integer    | null: false |
+| motion        | string     | null: false |
+| snack         | string     |
+| remarks       | text       |
+| information   | references | null: false, foreign_key: true |
+
+### Association
+ - belongs_to :user
+ - belongs_to :information
