@@ -4,9 +4,12 @@
 
 | Column                 | Type     | Options                   |
 | ---------------------- | -------- | ------------------------- |
-| email                  | string   | null: false, unique: true |
-| encrypted_password     | string   | null: false               |
 | nickname               | string   | null: false               |
+| email                  | string   | null: false, unique: true |
+| password               | string   | null: false               |
+| encrypted_password     | string   | null: false               |
+| profile                | text     | null: false               |
+
 
 ### Association
  - belongs_to :memo
