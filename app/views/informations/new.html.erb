@@ -1,0 +1,73 @@
+<section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ペット新規登録
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_for @information, url: informations_path, method: :post, local: true do |f| %>
+          <%= f.label :name, "ペットの名前", class: "label" %>
+          <%= f.text_field :name, class: "input is-info" %>
+
+          <%= f.label :sex, "ペットの性別", class: "label" %>
+          <div class="select">
+            <div class="select is-info">
+              <%= f.select :sex, {'♂': 1, '♀': 2}, { include_blank: '-'}, { class: 'select is-primary' , required: true } %>
+            </div>
+          </div>
+
+          <%= f.label :kinds, "ペットの種類", class: "label" %>
+          <%= f.text_field :kinds, class: "input is-info" %>
+
+          <%= f.label :color, "ペットの色", class: "label" %>
+          <%= f.text_field :color, class: "input is-info" %>
+
+          <%= f.label :birthday, "ペットの誕生日", class: "label" %>
+
+          <div class="select">
+            <div class="select is-info">
+              <%= raw sprintf(
+                      f.date_select(
+                        :birthday,
+                        class:"select is-primary",
+                        id:"birth-date",
+                        use_month_numbers: true,
+                        prompt:'-',
+                        start_year: 1950,
+                        end_year: (Time.now.year + 10),
+                        date_separator: '%s'),
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<br>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_for @information, url: informations_path, method: :post, local: true do |f| %>
+          <%= f.label :pet_image, "ペットの写真", class: "label" %>
+          <%= f.attachment_field :pet_image, class: "input is-info" %>
+          <br>
+
+
+          <br>
+          <%= f.submit "登録", class: "button is-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
