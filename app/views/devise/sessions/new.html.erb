@@ -16,16 +16,12 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email, class: "label" %>
-            <p class="control has-icons-left">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
-            </p>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
           </div>
 
           <div class="field">
             <%= f.label :password, class: "label" %>
-            <p class="control has-icons-left">
-              <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input" %>
-            </p>
+            <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input" %>
           </div>
 
           <div class="actions">

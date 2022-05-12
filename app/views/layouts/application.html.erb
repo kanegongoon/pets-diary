@@ -10,14 +10,14 @@
   </head>
 
   <body>
-    <% if flash[:notuce] %>
+    <% if flash[:notice] %>
       <div class = "notification is-info">
         <p class="notice"><%= notice %></p>
       </div>
     <% end %>
-
+    
     <% if flash[:alert] %>
-      <div class = "notufication is-denger">
+      <div class = "notification is-danger">
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
