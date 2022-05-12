@@ -1,0 +1,83 @@
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ペット詳細
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <article class="panel is-link">
+          <p class="panel-heading">
+             <%= @information.user.nickname %>さんのペット
+          </p>
+          <div class="panel-block">
+            <p class="control">
+              <%= @information.user.profile %>
+            </p>
+          </div>
+          <%= link_to user_path(@information.user), class: "panel-block" do %>
+            <%= @information.user.nickname %> さんのページへ
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by5">
+              <img class="is-rounded"><%= attachment_image_tag @information, :pet_image %>
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+              </div>
+            </div>
+            <div class="content">
+              <table class = "table is-striped">
+                <tbody>
+                  <tr>
+                    <th>ペット情報</th>
+                  </tr>
+                  <tr>
+                    <td><u>名前：<%= @information.name %></u></td>
+                  </tr>
+                  <tr>
+                    <td><u>性別：<%= @information.sex %></u></td>
+                  </tr>
+                  <tr>
+                    <td><u>種類：<%= @information.kinds %></u></td>
+                  </tr>
+                  <tr>
+                    <td><u>色：<%= @information.color %></u></td>
+                  </tr>
+                  <tr>
+                    <td><u>誕生日：<%= @information.birthday %></u></td>
+                  </tr>
+                </body>
+              </table>
+              <br>
+
+              <br>
+              <% if @information.user.id == current_user.id %>
+                <%= link_to "編集画面へ", edit_information_path(@information), class: "button is-info" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
